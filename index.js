@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const rateLimit = require('express-rate-limit')
 require("./memes")();
 
 function getTime() {
@@ -11,6 +12,15 @@ function getTime() {
 
 	return dateAndTime;
 }
+
+const limiter = rateLimit({
+	windowMs: 5 * 60 * 1000,
+	max: 50,
+	standardHeaders: true,
+	legacyHeaders: false,
+})
+
+app.use(limiter)
 
 app.use(function logger(req, res, next) {
 	console.log(`${getTime()} EST - ${req.method} ${req.path} - ${req.ip}`);
