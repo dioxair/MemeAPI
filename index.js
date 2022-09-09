@@ -1,6 +1,6 @@
 const express = require("express");
-
 const app = express();
+const memes = require("./memes")();
 
 app.use(function logger(req, res, next) {
 	console.log(new Date().toString())
