@@ -11,6 +11,7 @@ app.use(function logger(req, res, next) {
 });
 
 app.get("/", (req, res) => {
+	res.set("Access-Control-Allow-Origin", "*");
 	res.json({
 		"meme": memeLinks[Math.floor(Math.random() * memeLinks.length)]
 	})
