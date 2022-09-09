@@ -2,10 +2,18 @@ const express = require("express");
 const app = express();
 require("./memes")();
 
+function getTime() {
+	const date = new Date();
+	
+	let dateAndTime = date.toLocaleString('en-US', {
+		timeZone: 'America/New_York',
+	});
+
+	return dateAndTime;
+}
+
 app.use(function logger(req, res, next) {
-	console.log(new Date().toString())
-	console.log("")
-	console.log(`${req.method} ${req.path} - ${req.ip}`);
+	console.log(`${getTime()} EST - ${req.method} ${req.path} - ${req.ip}`);
 	console.log("")
 	next();
 });
