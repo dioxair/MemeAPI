@@ -11,7 +11,9 @@ app.use(function logger(req, res, next) {
 });
 
 app.get("/", (req, res) => {
-	res.send(">w<")
+	res.json({
+		"meme": memeLinks[Math.floor(Math.random() * memeLinks.length)]
+	})
 });
 
 app.listen(3000, () => {
