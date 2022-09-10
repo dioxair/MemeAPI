@@ -5,7 +5,7 @@ require("./memes")();
 
 function getTime() {
 	const date = new Date();
-	
+
 	let dateAndTime = date.toLocaleString('en-US', {
 		timeZone: 'America/New_York',
 	});
@@ -14,7 +14,7 @@ function getTime() {
 }
 
 const limiter = rateLimit({
-	windowMs: 5 * 60 * 1000,
+	windowMs: 1 * 60 * 1000,
 	max: 50,
 	standardHeaders: true,
 	legacyHeaders: false,
