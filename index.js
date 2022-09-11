@@ -29,9 +29,19 @@ app.use(function logger(req, res, next) {
 });
 
 app.get("/", (req, res) => {
+	let fileType
 	res.set("Access-Control-Allow-Origin", "*");
+	let meme = memeLinks[Math.floor(Math.random() * memeLinks.length)]
+	if (meme.includes(".mp4")) {
+		fileType = "mp4"
+	} else if (meme.includes(".png")) {
+		fileType = "png"
+	} else if (meme.includes(".gif")) {
+		fileType = "gif"
+	}
 	res.json({
-		"meme": memeLinks[Math.floor(Math.random() * memeLinks.length)]
+		"meme": meme,
+		"fileType": fileType
 	})
 });
 
