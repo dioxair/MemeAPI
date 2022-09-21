@@ -54,5 +54,5 @@ app.get("/v1/api", (req, res) => {
 });
 
 app.listen(3000, () => {
-	console.log("Started server!");
+	console.log("Started server!\n");
 });
