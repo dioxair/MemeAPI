@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const rateLimit = require('express-rate-limit')
+const fs = require("fs");
 require("./memes")();
 
 function getTime() {
@@ -25,6 +26,13 @@ app.use(limiter)
 app.use(function logger(req, res, next) {
 	console.log(`${getTime()} EST - ${req.method} ${req.path} - ${req.ip}`);
 	console.log("")
+	fs.appendFile("logs.txt", `${getTime()} EST - ${req.method} ${req.path} - ${req.ip}
+ 
+`, err => {
+		if (err) {
+			console.log(err)
+		}
+	})
 	next();
 });
 
