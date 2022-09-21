@@ -28,7 +28,7 @@ app.use(function logger(req, res, next) {
 	next();
 });
 
-app.get("/", (req, res) => {
+app.get("/v1/api", (req, res) => {
 	let fileType
 	res.set("Access-Control-Allow-Origin", "*");
 	let meme = memeLinks[Math.floor(Math.random() * memeLinks.length)]
